@@ -13,7 +13,7 @@ type Window struct {
 type BTree struct {
 }
 
-//用来存储字符的外部状态，如字符的字体等信息
+//用来存储字符的外部状态，提供字符的上下文环境
 type GlyphContext struct {
 	index int
 	fonts *BTree
@@ -28,7 +28,7 @@ func (g *GlyphContext) Insert(quantity int) {
 }
 
 func (g *GlyphContext) GetFont() *Font {
-
+	return nil
 }
 func (g *GlyphContext) SetFont(f *Font, span int) {
 
@@ -56,4 +56,31 @@ type Character struct {
 
 func (c *Character) Draw(w *Window, context *GlyphContext) {
 
+}
+
+const (
+	NCHARCODES = 128
+)
+
+type Row struct {
+}
+
+type Column struct {
+}
+
+type GlyphFactory struct {
+	chars []*Character
+}
+
+func (g *GlyphFactory) CreateCharacter(c byte) *Character {
+	if g.chars[c] != nil {
+		g.chars[c] = &Character{c}
+	}
+	return g.chars[c]
+}
+func (g *GlyphFactory) CreateRow() *Row {
+	return &Row{}
+}
+func (g *GlyphFactory) CreateColumn() *Column {
+	return &Column{}
 }
