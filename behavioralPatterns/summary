@@ -1,3 +1,5 @@
 【行为模式：涉及到算法和对象间职责分配，不仅描述对象和类的模式，还描述他们之间的通信模式，将你的注意力从运行时难以跟踪的复杂控制流，转移到对象间的联系方式上来】
-chainofresponsibility:
-Commanda(又名 Action 或 Transaction):将请求封装为对象
+chainofresponsibility（职责链）: 可解偶请求发送者和接收者
+即将所有handler连接成一条职责链，当一个请求发生时，会将这个请求沿着链传递，直接有一个可以处理该请求的handler为止
+Command(又名 Action 或 Transaction):将请求封装为对象，从而使得不同的请求进行参数化后，可以组织成队列、记录请示日志、及可支持撤消的操作
+Interpreter(解释器):
